@@ -1,0 +1,11 @@
+mat-sidenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  background: rgba(120, 114, 202, 0.5);
+  height:100rem;
+}
+:host{
+  margin: 1rem 1rem;
+}

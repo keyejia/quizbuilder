@@ -1,0 +1,31 @@
+
+<mat-card class="create">
+  <mat-card-header>
+  <h1>Create a new quiz </h1>
+  </mat-card-header>
+  <mat-card-actions>
+    <button mat-fab color="primary" routerLink="/build" class="createButton">NEW</button>
+  </mat-card-actions>
+</mat-card>
+
+<mat-card *ngFor="let quiz of quizes">
+  <mat-card-header>
+    <h1>{{ quiz.title }}</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <div>
+      <h4>{{ quiz.desciption }}</h4>
+      <h4>Creator: {{ quiz.creator }}</h4>
+    </div>
+    <div>
+      <mat-chip-list *ngFor="let tag of quiz.tags">
+        <mat-chip>{{tag}}</mat-chip>
+      </mat-chip-list>
+    </div>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+  <mat-card-actions>
+    <button mat-raised-button color="primary">Edit</button>
+    <button mat-raised-button color="accent">share</button>
+  </mat-card-actions>
+</mat-card>

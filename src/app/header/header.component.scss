@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+ul {
+  list-style:none;
+  padding:0;
+  margin:0;
+  display: flex;
+}
+
+.spacer{
+  flex: 1 1 auto;
+}
+h1{
+  margin: auto 5px;
+}
+img{
+  margin: 5px auto auto;
+  padding: 0;
+  display: inline-block;
+  background-repeat: no-repeat no-repeat;
+  pointer-events: none;
+  height: 3rem;
+  width: 3rem;
+}

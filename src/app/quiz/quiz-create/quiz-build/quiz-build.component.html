@@ -1,0 +1,26 @@
+<mat-card>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side" opened>
+    <div>
+      <ul>
+        <li>
+          title
+        </li>
+        <li>
+          description
+        </li>
+      </ul>
+    </div>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-form-field ng-show="editing" ng-submit="editing = false">
+      <input matInput type="text" ng-model="bday.name" name="title" placeholder="enter a title" ng-required/>
+      <input matInput type="text" ng-model="bday.date" name="description" placeholder="description" ng-required/>
+      <br/>
+      <button mat-button class="btn" type="submit">Save</button>
+     </mat-form-field>
+    <p>questions</p>
+    <button mat-button (click)="sidenav.toggle()">Toggle</button>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+</mat-card>
