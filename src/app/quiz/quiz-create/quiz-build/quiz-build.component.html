@@ -1,26 +1,76 @@
 <mat-card>
-<mat-sidenav-container>
-  <mat-sidenav #sidenav mode="side" opened>
-    <div>
-      <ul>
-        <li>
-          title
-        </li>
-        <li>
-          description
-        </li>
-      </ul>
+  <div class="parent">
+    <div class="div1">
+      <div style="padding: 5px 0 0 5px; height: 140px; width: 150px;position:fixed;left:10%;top:10%">
+        <ul>
+          <li>
+            title
+          </li>
+          <li>
+            description
+          </li>
+        </ul>
+      </div>
     </div>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-form-field ng-show="editing" ng-submit="editing = false">
-      <input matInput type="text" ng-model="bday.name" name="title" placeholder="enter a title" ng-required/>
-      <input matInput type="text" ng-model="bday.date" name="description" placeholder="description" ng-required/>
-      <br/>
-      <button mat-button class="btn" type="submit">Save</button>
-     </mat-form-field>
-    <p>questions</p>
-    <button mat-button (click)="sidenav.toggle()">Toggle</button>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <div class="div2">
+      <form>
+        <mat-form-field appearance="outline">
+          <mat-label>Title</mat-label>
+          <input matInput class="title" type="text" name="title" [(value)]="quiz.title"/>
+        </mat-form-field>
+          <br/>
+          <mat-form-field appearance="outline" appearance="outline">
+            <mat-label>Description</mat-label>
+            <textarea  matInput row="6" class="description" type="text" name="description">
+            </textarea>
+          </mat-form-field>
+          <mat-form-field class="chip-list" appearance="outline">
+            <mat-chip-list #chipList aria-label="Tag selection">
+              <mat-chip *ngFor="let tag of tags"
+                        (removed)="removeChip(tag)">
+                {{tag.name}}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+              <input  placeholder="Add Tags ..."
+                      [matChipInputFor]="chipList"
+                      [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                      [matChipInputAddOnBlur]="chipAddOnBlur"
+                      (matChipInputTokenEnd)="addChip($event)">
+            </mat-chip-list>
+          </mat-form-field>
+          <br/>
+        <button mat-raised-button type="submit" color="primary" *ngIf="!quizCreated" (click)="createQuiz()">Create</button>
+      </form>
+      <mat-card *ngFor="let question of questions"  [class.mat-elevation-z6]=true>
+        <mat-card-title>
+          Question {{(questions.indexOf(question)+1).toString()}}
+        </mat-card-title>
+        <mat-card-content>
+          <form>
+            <mat-form-field  appearance="outline">
+              <mat-label>Question</mat-label>
+              <textarea class="questionIn" row="10" matInput type="text">{{question.question}}</textarea>
+            </mat-form-field>
+
+              <mat-form-field *ngFor="let choice of question.choices" appearance="outline" [floatLabel]="floatLabelAlways.value">
+                <mat-radio-button [checked]="choice.c"></mat-radio-button>
+                <mat-label>choice: {{letterOf(question.choices, choice)}}</mat-label>
+                <textarea style="margin: auto;" row="5" matInput type="text">{{choice.ans}}</textarea>
+                <button mat-raised-button style="float:right; margin-right:2rem"(click)="removeChoice(question.choices, choice)">Remove Choice</button>
+              </mat-form-field>
+              <mat-form-field appearance="outline">
+                <mat-label>Tag</mat-label>
+                <textarea matInput class="tag" type="tag" name="tag" >{{question.tag}}</textarea>
+              </mat-form-field>
+          </form>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button (click)="addChoice(question)"> Add Choice</button>
+          <button mat-raised-button (click)="saveQuestion(question)">Save </button>
+          <button mat-raised-button color="warn" (click)="removeQuestion(question)">Remove Question</button>
+        </mat-card-actions>
+      </mat-card>
+      <button mat-raised-button type="submit" color="primary" *ngIf="quizCreated" (click)="addQuestion()">Add Question</button>
+  </div>
+  </div>
 </mat-card>

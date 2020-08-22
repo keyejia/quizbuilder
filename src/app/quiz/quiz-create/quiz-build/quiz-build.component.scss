@@ -1,5 +1,4 @@
 mat-sidenav {
-  display: flex;
   align-items: center;
   justify-content: center;
   width: 200px;
@@ -8,4 +7,41 @@ mat-sidenav {
 }
 :host{
   margin: 1rem 1rem;
+}
+mat-form-field,
+textarea {
+  width: 100%;
+}
+.parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+  }
+  mat-chip-list {
+    width: 100%;
+  }
+  mat-radio-button{
+    margin:auto auto 1rem;
+  }
+  mat-card{
+    margin: 1rem auto;
+  }
+  .div1 {
+    grid-area: 1 / 1 / 6 / 2;
+    background-color: aquamarine;
+    position:fixed;
+  }
+  form{
+    font-size: 16px;
+  }
+  button{
+    font-size: 16px;
+  }
+  .div2 {
+    grid-area: 1 / 2 / 6 / 6;
+    margin: 4rem 4rem auto;
+  }
+.questionIn{
+  height: 8rem;
 }

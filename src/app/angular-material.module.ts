@@ -11,6 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
 imports:[
@@ -25,7 +26,8 @@ imports:[
   MatIconModule,
   MatChipsModule,
   MatDividerModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatRadioModule
 ],
 exports: [
   MatInputModule,
@@ -39,7 +41,8 @@ exports: [
   MatIconModule,
   MatChipsModule,
   MatDividerModule,
-  MatSidenavModule
+  MatSidenavModule,
+  MatRadioModule
 ]
 })
 
