@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {COMMA, ENTER} from '@angular/cdk/keycodes';
 import {MatChipInputEvent} from '@angular/material/chips';
 import {FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { throwToolbarMixedModesError } from '@angular/material/toolbar';
 
 @Component({
   selector: 'app-quiz-build',
   templateUrl: './quiz-build.component.html',
-  styleUrls: ['./quiz-build.component.scss']
+  styleUrls: ['./quiz-build.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class QuizBuildComponent implements OnInit {
   chipAddOnBlur = true;
@@ -17,6 +19,8 @@ export class QuizBuildComponent implements OnInit {
   questions: any[] = [];
   quiz: any;
   constructor() { }
+  topOfPage = 'top';
+  currQuestion = 0;
 
   ngOnInit(): void {
     this.quiz = {title: "title!!!!"}
@@ -54,6 +58,10 @@ export class QuizBuildComponent implements OnInit {
       tag: ""
     }
     this.questions.push(emptyQuestion);
+    this.currQuestion = this.questions.length-1;
+  }
+  moveToQuestion(question){
+    this.currQuestion = this.questions.indexOf(question);
   }
 
   letterOf(choices, choice){
@@ -62,7 +70,7 @@ export class QuizBuildComponent implements OnInit {
   }
   removeChoice(choices, choice){
     const index = choices.indexOf(choice);
-    if (index >= 0) {
+    if (index >= 0 && choices.length>2) {
       choices.splice(index, 1);
     }
   }
@@ -78,6 +86,7 @@ export class QuizBuildComponent implements OnInit {
     if (indx>=0){
       this.questions.splice(indx, 1);
     }
+    this.currQuestion = this.questions.length-1;
   }
 
 }

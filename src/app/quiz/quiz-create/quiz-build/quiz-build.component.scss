@@ -1,13 +1,3 @@
-mat-sidenav {
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  background: rgba(120, 114, 202, 0.5);
-  height:100rem;
-}
-:host{
-  margin: 1rem 1rem;
-}
 mat-form-field,
 textarea {
   width: 100%;
@@ -21,16 +11,14 @@ textarea {
   mat-chip-list {
     width: 100%;
   }
-  mat-radio-button{
-    margin:auto auto 1rem;
-  }
-  mat-card{
+  mat-card mat-expansion-panel{
     margin: 1rem auto;
   }
   .div1 {
     grid-area: 1 / 1 / 6 / 2;
     background-color: aquamarine;
     position:fixed;
+    overflow-y: auto;
   }
   form{
     font-size: 16px;
@@ -38,10 +26,24 @@ textarea {
   button{
     font-size: 16px;
   }
+  .addQuestion{
+    margin: 0.5rem auto;
+  }
   .div2 {
     grid-area: 1 / 2 / 6 / 6;
     margin: 4rem 4rem auto;
   }
-.questionIn{
-  height: 8rem;
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  ul {
+    list-style:none;
+    padding:auto 1rem;
+    margin:auto 1rem;
+    text-align: right;
+  }
+.expansionAction{
+  float:right;
 }

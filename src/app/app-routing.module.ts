@@ -1,9 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, ExtraOptions  } from '@angular/router';
 import { QuizListComponent } from './quiz/quiz-list/quiz-list.component';
 import { QuizCreateComponent } from './quiz/quiz-create/quiz-create.component';
 import { QuizBuildComponent } from './quiz/quiz-create/quiz-build/quiz-build.component';
 
+const routerOptions: ExtraOptions = {
+  scrollPositionRestoration: 'enabled',
+  anchorScrolling: 'enabled',
+  scrollOffset: [0, 64],
+  useHash:true,
+  onSameUrlNavigation: 'reload'
+};
 
 const routes: Routes = [
   { path:'', component: QuizListComponent },
@@ -12,7 +19,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, routerOptions)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

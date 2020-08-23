@@ -12,6 +12,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
 imports:[
@@ -27,7 +29,9 @@ imports:[
   MatChipsModule,
   MatDividerModule,
   MatSidenavModule,
-  MatRadioModule
+  MatRadioModule,
+  MatCheckboxModule,
+  MatListModule
 ],
 exports: [
   MatInputModule,
@@ -42,7 +46,9 @@ exports: [
   MatChipsModule,
   MatDividerModule,
   MatSidenavModule,
-  MatRadioModule
+  MatRadioModule,
+  MatCheckboxModule,
+  MatListModule
 ]
 })
 
