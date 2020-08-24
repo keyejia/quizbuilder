@@ -1,0 +1,39 @@
+<mat-card class="create">
+  <mat-card-header>
+  <h1>{{quiz.title}}</h1>
+  </mat-card-header>
+  <mat-card-content>
+    {{quiz.desciption}}
+  </mat-card-content>
+</mat-card>
+
+<mat-card *ngFor="let question of quiz.questions">
+  <mat-card-header>
+    <h1>{{ question.question }}</h1>
+  </mat-card-header>
+  <mat-card-content>
+    <button mat-raised-button
+            style="width:100%; text-align: left;"
+            *ngFor="let choice of question.choices"
+            (click)="choice.choose=!choice.choose"
+            [class.choose]="choice.choose"
+            [class.correct]="choice.c"
+            [class.incorrect]="choice.choose && !choice.c"
+            [disabled]="question.submitted"
+            >
+      {{letterOf(question.choices, choice)}}.  {{choice.ans}}
+    </button>
+    <button mat-raised-button
+            color="primary"
+            (click)="question.submitted=!question.submitted"
+            (click)="checkQestion(question)"
+            [disabled]="question.submitted"
+            [class.correctAll]="question.correct"
+            [class.incorrectAll]="!question.correct"
+            >
+    <mat-icon>
+      done
+    </mat-icon></button>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+</mat-card>
